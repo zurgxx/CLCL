@@ -762,10 +762,10 @@ static BOOL history_large_image_check(const DATA_INFO *di)
 	const DATA_INFO *cdi;
 
 	for (cdi = di->child; cdi != NULL; cdi = cdi->next) {
-		if (option.history_max_image_size_mb > 0 &&
+		if (option.history_max_image_memory_mb > 0 &&
 			(cdi->format == CF_BITMAP || cdi->format == CF_DIB) &&
 			(ULONGLONG)cdi->size >=
-			(ULONGLONG)option.history_max_image_size_mb * 1024 * 1024) {
+			(ULONGLONG)option.history_max_image_memory_mb * 1024 * 1024) {
 			return TRUE;
 		}
 	}
@@ -816,7 +816,7 @@ static BOOL clipboard_to_history(const HWND hWnd)
 	CloseClipboard();
 
 	// ‘å‚«‚ÈBITMAP/DIB‚Í—š—ð‚É’Ç‰Á‚µ‚È‚¢
-	if (history_large_image_check(di) == TRUE) {
+	if (cp_tmi.enable == FALSE && history_large_image_check(di) == TRUE) {
 		data_free(di);
 		return TRUE;
 	}

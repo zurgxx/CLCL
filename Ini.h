@@ -94,7 +94,7 @@ typedef struct _OPTION_INFO {
 	int history_overlap_check;			// 履歴の重複チェック 0-チェックしない 1-最近の１件のみチェック 2-全ての履歴をチェック
 	int history_ignore_regist_item;		// 登録アイテムをクリップボードに送った時に履歴に入れない
 
-	int history_max_image_size_mb;					// Maximum image size in history (MB)
+	int history_max_image_memory_mb;					// Maximum image memory size in history (MB)
 
 	// menu
 	TCHAR *menu_text_format;			// メニュータイトルの表示形式
