@@ -190,6 +190,10 @@ BOOL ini_get_option(TCHAR *err_str)
 	if (option.history_max <= 0) {
 		option.history_max = 30;
 	}
+	option.history_max_image_size_mb = profile_get_int(TEXT("history"), TEXT("MaxImageMemoryMB"), HISTORY_IMAGE_SIZE_DEFAULT_MB, ini_path);
+	if (option.history_max_image_size_mb < 0) {
+		option.history_max_image_size_mb = HISTORY_IMAGE_SIZE_DEFAULT_MB;
+	}
 	option.history_overlap_check = profile_get_int(TEXT("history"), TEXT("overlap_check"), 1, ini_path);
 	option.history_ignore_regist_item = profile_get_int(TEXT("history"), TEXT("ignore_regist_item"), 0, ini_path);
 
@@ -806,6 +810,7 @@ BOOL ini_put_option(void)
 	profile_write_int(TEXT("history"), TEXT("always_save"), option.history_always_save, ini_path);
 	profile_write_int(TEXT("history"), TEXT("delete"), option.history_delete, ini_path);
 	profile_write_int(TEXT("history"), TEXT("max"), option.history_max, ini_path);
+	profile_write_int(TEXT("history"), TEXT("MaxImageMemoryMB"), option.history_max_image_size_mb, ini_path);
 	profile_write_int(TEXT("history"), TEXT("overlap_check"), option.history_overlap_check, ini_path);
 	profile_write_int(TEXT("history"), TEXT("ignore_regist_item"), option.history_ignore_regist_item, ini_path);
 

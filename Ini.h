@@ -46,6 +46,8 @@
 #define OPTION_SHOW_SENDKEY				TEXT("7")
 #define OPTION_SHOW_TOOL				TEXT("8")
 
+#define HISTORY_IMAGE_SIZE_DEFAULT_MB	10
+
 /* Struct */
 // color info
 typedef struct _COLOR_INFO {
@@ -91,6 +93,8 @@ typedef struct _OPTION_INFO {
 	int history_max;					// 履歴件数
 	int history_overlap_check;			// 履歴の重複チェック 0-チェックしない 1-最近の１件のみチェック 2-全ての履歴をチェック
 	int history_ignore_regist_item;		// 登録アイテムをクリップボードに送った時に履歴に入れない
+
+	int history_max_image_size_mb;					// Maximum image size in history (MB)
 
 	// menu
 	TCHAR *menu_text_format;			// メニュータイトルの表示形式
